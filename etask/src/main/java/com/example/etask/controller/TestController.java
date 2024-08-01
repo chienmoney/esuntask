@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.etask.model.SeatingChart;
 import org.springframework.web.bind.annotation.*;
-import com.example.etask.repository.SeatingChartRepository;
+import com.example.etask.service.SeatingChartService;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import java.util.List;
 public class TestController {
 
     @Autowired
-    private SeatingChartRepository seatingChartRepository;
+    private SeatingChartService seatingChartService;
 
     @GetMapping("/seating-charts")
     public List<SeatingChart> getAllSeatingCharts() {
-        return seatingChartRepository.findAll();
+        return seatingChartService.findAll();
     }
 }

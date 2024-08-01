@@ -1,7 +1,7 @@
 package com.example.etask.controller;
 
 import com.example.etask.model.SeatingChart;
-import com.example.etask.repository.SeatingChartRepository;
+import com.example.etask.service.SeatingChartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,31 +14,31 @@ import java.util.Optional;
 public class SeatingChartController {
 
     @Autowired
-    private SeatingChartRepository seatingChartRepository;
+    private SeatingChartService seatingChartService;
 
     @GetMapping
     public List<SeatingChart> getAllSeatingCharts() {
-        return seatingChartRepository.findAll();
+        return seatingChartService.findAll();
     }
 
     @GetMapping("/{floorSeatSeq}")
     public Optional<SeatingChart> getSeatingChartById(@PathVariable Integer floorSeatSeq) {
-        return seatingChartRepository.findById(floorSeatSeq);
+        return seatingChartService.findById(floorSeatSeq);
     }
 
     @PostMapping
     public SeatingChart createSeatingChart(@RequestBody SeatingChart seatingChart) {
-        return seatingChartRepository.save(seatingChart);
+        return seatingChartService.save(seatingChart);
     }
 
     @PutMapping("/{floorSeatSeq}")
     public SeatingChart updateSeatingChart(@PathVariable Integer floorSeatSeq, @RequestBody SeatingChart seatingChart) {
         seatingChart.setFloorSeatSeq(floorSeatSeq);
-        return seatingChartRepository.save(seatingChart);
+        return seatingChartService.save(seatingChart);
     }
 
     @DeleteMapping("/{floorSeatSeq}")
     public void deleteSeatingChart(@PathVariable Integer floorSeatSeq) {
-        seatingChartRepository.deleteById(floorSeatSeq);
+        seatingChartService.deleteById(floorSeatSeq);
     }
 }

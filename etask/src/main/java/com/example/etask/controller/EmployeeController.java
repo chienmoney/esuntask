@@ -1,7 +1,7 @@
 package com.example.etask.controller;
 
 import com.example.etask.model.Employee;
-import com.example.etask.repository.EmployeeRepository;
+import com.example.etask.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,31 +14,31 @@ import java.util.Optional;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeRepository employeerRepository;
+    private EmployeeService EmployeeService;
 
     @GetMapping
     public List<Employee> getAllEmployees() {
-        return employeerRepository.findAll();
+        return EmployeeService.findAll();
     }
 
     @GetMapping("/{empId}")
     public Optional<Employee> getEmployeeById(@PathVariable String empId) {
-        return employeerRepository.findById(empId);
+        return EmployeeService.findById(empId);
     }
 
     @PostMapping
     public Employee createEmployee(@RequestBody Employee employee) {
-        return employeerRepository.save(employee);
+        return EmployeeService.save(employee);
     }
 
     @PutMapping("/{empId}")
     public Employee updateEmployee(@PathVariable String empId, @RequestBody Employee employee) {
         employee.setEmpId(empId);
-        return employeerRepository.save(employee);
+        return EmployeeService.save(employee);
     }
 
     @DeleteMapping("/{empId}")
     public void deleteEmployee(@PathVariable String empId) {
-        employeerRepository.deleteById(empId);
+        EmployeeService.deleteById(empId);
     }
 }
