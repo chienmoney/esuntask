@@ -3,6 +3,8 @@ com\example\etask\model\Employee.class
 com\example\etask\model\SeatingChart.class
 com\example\etask\repository\SeatingChartRepository.class
 com\example\etask\controller\SeatingChartController.class
+com\example\etask\service\EmployeeService.class
 com\example\etask\controller\EmployeeController.class
 com\example\etask\EtaskApplication.class
 com\example\etask\repository\EmployeeRepository.class
+com\example\etask\service\SeatingChartService.class
