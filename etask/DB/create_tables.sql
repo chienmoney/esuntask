@@ -1,4 +1,7 @@
 CREATE DATABASE IF NOT EXISTS seating_management;
+CREATE USER 'user'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'user'@'%';
+ FLUSH PRIVILEGES;
 
 USE seating_management;
 
